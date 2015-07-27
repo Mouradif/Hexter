@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:36:56 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/27 21:04:50 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/27 21:13:19 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "bsq.h"
 #include "ft.h"
 
-#define SIZE_BUF (1024 * 30)
+#define SIZE_BUF (1024 * 300)
 
 int		main(int ac, char **av)
 {
