@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bsq.h                                              :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/07/27 16:38:51 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/27 18:35:52 by jlawson          ###   ########.fr       */
+/*   Created: 2015/07/11 17:58:13 by jlawson           #+#    #+#             */
+/*   Updated: 2015/07/15 15:28:03 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BSQ_H
-# define BSQ_H
+int ft_strlen(char *str)
+{
+	int i;
 
-int		bsq_from_file(int ac, char **av);
-char	*read_stdin(void);
-char	*ft_realloc(char *buf, size_t size);
-void	ft_cpy(char *dest, char *src, size_t size);
-
-#endif
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
