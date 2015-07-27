@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:36:56 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/27 18:36:09 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/27 21:04:50 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ char	*read_stdin(void)
 	size_t	count;
 
 
-	buf = malloc(SIZE_BUF);
+	buf = malloc(SIZE_BUF + 1);
 	i = 0;
+	buf[SIZE_BUF] = '\0';
 	len = SIZE_BUF;
 	count = read(STDIN_FILENO, buf, len);
 	while (count > 0)
@@ -53,7 +54,7 @@ char	*read_stdin(void)
 		if (len - i == 0)
 		{
 			len += SIZE_BUF;
-			buf = ft_realloc(buf, len);
+			buf = ft_realloc(buf, len + 1);
 		}
 		count = read(STDIN_FILENO, (buf + i), (len - i));
 	}
