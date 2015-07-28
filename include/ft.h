@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/15 15:54:52 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/23 22:44:55 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/28 13:42:14 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void	ft_sort_integer_table(int *tab, int size);
 char	**ft_split_whitespaces(char *str);
 char	*ft_strdup(char *src);
 int		ft_strcmp(char *s1, char *s2);
+void	ft_foreach(char *tab, int length, void (*f) (char));
 
 #endif
