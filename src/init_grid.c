@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/28 13:55:29 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/28 14:10:12 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/28 18:29:53 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,48 +14,51 @@
 #include "struct.h"
 #include "bsq.h"
 
+#define NOT_EQUAL(a, b, c) (a != b && b != c && c != a)
+
 t_grid			*get_param(char *str)
 {
-	unsigned int	i;
-	unsigned int	size_line;
-	unsigned int	taille;
+	size_t	i;
+	size_t	size_l;
+	size_t	size;
 
 	i = 0;
-	size_line = size_line(str);
-	if (size_line < 4 && !(*str >= '1' && *str <= '9'))
+	size_l = size_line(str);
+	if (size_l < 4 && !(*str >= '1' && *str <= '9'))
 		return (NULL);
-	taille = 0;
-	while (i < size_line - 3 && str[i] >= '0' && str[i] <= '9')
+	size = 0;
+	while (i < size_l - 3 && str[i] >= '0' && str[i] <= '9')
 	{
-		taille = taille * 10 + str[i] - '0';
+		size = size * 10 + str[i] - '0';
 		i++;
 	}
-	if (i == size_line - 3 && ft_foreach((str + i), 3, &is_printable)
+	if (i == size_l - 3 && ft_foreach((str + i), 3, &is_printable)
 			&& NOT_EQUAL(str[i], str[i + 1], str[i + 2]))
-		return (init_grid(taille, str[i], str[i + 1], str[i + 2]));
+		return (init_grid(size, str[i], str[i + 1], str[i + 2]));
 	else
 		return (NULL);
 }
 
-t_grid			*init_grid(unsigned int taille, char vide, char obstacle,
-		char plein)
+t_grid			*init_grid(size_t size, char *str, size_t pointer_char)
 {
-	t_grid			*grid;
-	unsigned int	i;
+	t_grid	*grid;
+	size_t	i;
 
 	grid = malloc(sizeof(t_grid));
 	if (grid)
 	{
-		grid->taille = taille;
-		grid->vide = vide;
-		grid->plein = plein;
-		grid->grid = malloc(taille * sizeof(t_cell *));
+		grid->size = size;
+		grid->str = str;
+		grid->vide = str[pointer_char];
+		grid->obstacle = str[pointer_char + 1];
+		grid->plein = str[pointer_char + 2];
+		grid->grid = malloc(size * sizeof(t_cell *));
 		i = 0;
 		if (grid->grid)
 		{
-			while (i < taille)
+			while (i < size)
 			{
-				grid->grid[i] = malloc(taille * sizeof(t_cell));
+				grid->grid[i] = malloc(size * sizeof(t_cell));
 				i++;
 			}
 		}
@@ -63,9 +66,9 @@ t_grid			*init_grid(unsigned int taille, char vide, char obstacle,
 	return (grid);
 }
 
-unsigned int	size_line(char *str)
+size_t	size_line(char *str)
 {
-	unsigned int ret;
+	size_t ret;
 
 	ret = 0;
 	while (str[ret] && str[ret] != '\n')
