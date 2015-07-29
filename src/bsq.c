@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 18:37:59 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/28 14:08:57 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/29 03:07:22 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "struct.h"
 #include "bsq.h"
 
-#define NOT_EQUAL(a, b, c) ((a != b && b != c && c != a) ? 1 : 0)
+#define NOT_EQUAL(a, b, c) (a != b && b != c && c != a)
 
 char			*bsq(char *str)
 {
