@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 02:49:59 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/29 18:07:58 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/29 22:09:24 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ int	ft_atoi(char *str)
 	digits = count_digits(str);
 	while (++i < digits)
 		result += (str[i] - 48) * ft_power(10, digits - i - 1);
-	return (result * neg_pos);
+	return (result);
 }

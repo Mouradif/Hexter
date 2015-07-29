@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 21:22:48 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/29 18:09:12 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/29 22:19:21 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct		s_grid
 	char			vide;
 	char			obs;
 	char			plein;
+	int				fd;
 	struct s_cell	**grid;
 }					t_grid;
 

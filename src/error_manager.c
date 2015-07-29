@@ -6,22 +6,21 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 08:37:24 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/29 19:54:45 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/29 22:15:49 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "struct.h"
+#include "err.h"
 
-int			errno(int err, t_grid *grid)
+int			errno(int err)
 {
 	g_errno = err;
-	ft_free(grid);
 	return (0);
 }
 
-void		*v_errno(int err, t_grid *grid)
+void		*v_errno(int err)
 {
 	g_errno = err;
-	ft_free(grid);
 	return (NULL);
 }

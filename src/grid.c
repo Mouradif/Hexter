@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 19:44:15 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/29 20:26:39 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/29 22:15:58 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	ft_remap(t_grid *grid)
 		i = 0;
 		while (i < grid->width)
 		{
-			if (ft_cell_search(*grid, i, j))
+			if (ft_cell_search(grid, i, j))
 				ft_cell_increment(grid, i, j);
 		}
 	}

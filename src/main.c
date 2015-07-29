@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:36:56 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/29 21:55:00 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/29 22:18:59 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@
 
 int		g_errno = 0;
 
-void	ft_read_next(t_grid *grid, char buf, int *i, int *j)
+void	ft_read_next(t_grid *grid, char buf, size_t *i, size_t *j)
 {
 	if (buf == '\n')
 	{
-		*j++;
+		(*j)++;
 		*i = 0;
 	}
 	else
@@ -51,7 +51,7 @@ void	ft_read(t_grid *grid)
 
 	i = 0;
 	j = 1;
-	while ((err = read(fd, buf, len)))
+	while ((err = read(grid->fd, buf, len)))
 	{
 		if (err == -1)
 			errno(12);
