@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:36:56 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/29 17:10:59 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/29 19:53:21 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 #define BUF_SIZE (1024 * 300)
 
-int		g_errno;
+int		g_errno = 0;
 
 char	*ft_read(int fd)
 {

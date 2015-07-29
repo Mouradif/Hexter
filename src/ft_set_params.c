@@ -6,13 +6,15 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 18:18:21 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/29 18:18:23 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/29 20:03:41 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "bsq.h"
 #include "ft.h"
 #include "struct.h"
+#include "err.h"
 
 void	ft_set_params(t_grid *grid)
 {
@@ -24,16 +26,25 @@ void	ft_set_params(t_grid *grid)
 	i = -1;
 	while ((ret = read(grid->fd, buf, 1)) && str[i] != '\n')
 	{
+		if (str[i] == '\0')
+		{
+			errno(11, grid);
+			ret = 0;
+		}
 		i++;
 		str[i] = buf;
 	}
-	grid->plein = str[i];
-	str[i] = '\0';
-	grid->obs = str[i - 1];
-	str[i - 1] = '\0';
-	grid->vide = str[i - 2];
-	str[i - 2] = '\0';
-	if (ft_strlen(str) != count_digits(str))
-		errno(9);
-	grid->height = ft_atoi(str);
+	if (!g_errno)
+	{
+		grid->plein = str[i];
+		str[i] = '\0';
+		grid->obs = str[i - 1];
+		str[i - 1] = '\0';
+		grid->vide = str[i - 2];
+		str[i - 2] = '\0';
+		if (ft_strlen(str) != count_digits(str))
+			errno(9);
+		grid->height = ft_atoi(str);
+		grid->grid = malloc(sizeof(t_cell*) * grid->height);
+	}
 }

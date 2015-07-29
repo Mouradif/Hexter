@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_manager.c                                    :+:      :+:    :+:   */
+/*   err.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/07/29 08:37:24 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/29 19:54:45 by mkejji           ###   ########.fr       */
+/*   Created: 2015/07/29 19:52:01 by mkejji            #+#    #+#             */
+/*   Updated: 2015/07/29 19:53:36 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef ERR_H
+# define ERR_H
 
-int			errno(int err, t_grid *grid)
-{
-	g_errno = err;
-	ft_free(grid);
-	return (0);
-}
+extern int	g_errno;
 
-void		*v_errno(int err, t_grid *grid)
-{
-	g_errno = err;
-	ft_free(grid);
-	return (NULL);
-}
+#endif
