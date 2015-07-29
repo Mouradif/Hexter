@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:36:56 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/29 21:07:09 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/29 21:55:00 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 int		g_errno = 0;
 
-void	ft_read_next(char buf, int *i, int *j)
+void	ft_read_next(t_grid *grid, char buf, int *i, int *j)
 {
 	if (buf == '\n')
 	{
@@ -34,7 +34,11 @@ void	ft_read_next(char buf, int *i, int *j)
 		if (*i >= grid->width)
 			errno(3);
 		else
+		{
+			grid->grid[*j][*i].cell = buf;
+			grid->grid[*j][*i].index = (buf == grid->obs) ? -1 : 0;
 			i++;
+		}
 	}
 }
 
@@ -60,7 +64,7 @@ void	ft_read(t_grid *grid)
 			else if (!ft_allowed_chars(grid, buf))
 				return ;
 			else
-				ft_read_next(buf, &i, &j);
+				ft_read_next(grid, buf, &i, &j);
 		}
 	}
 }
@@ -101,8 +105,7 @@ int		main(int ac, char **av)
 		set_params(grid)
 		read_first_line(grid);
 		ft_read(grid);
-		ft_putstr(str);
-		free(str);
+		print_grid(grid);
 	}
 	return (0);
 }
