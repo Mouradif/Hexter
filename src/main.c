@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:36:56 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/29 09:01:30 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/29 17:10:59 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,26 @@
 #include "bsq.h"
 #include "ft.h"
 
-#define SIZE_BUF (1024 * 300)
+#define BUF_SIZE (1024 * 300)
 
 int		g_errno;
 
-char	*read_stdin(void)
+char	*ft_read(int fd)
 {
 	char	*buf;
 	size_t	i;
 	size_t	len;
 	size_t	count;
 
-	buf = malloc(SIZE_BUF + 1);
+	buf = malloc(BUF_SIZE + 1);
+	if (!buf)
+		return (v_errno(6));
 	i = 0;
-	len = SIZE_BUF;
-	while ((count = read(STDIN_FILENO, buf, len)))
+	len = BUF_SIZE;
+	while ((count = read(fd, buf, len)))
 	{
 		i += count;
-		len += SIZE_BUF;
+		len += BUF_SIZE;
 		buf = ft_realloc(buf, len + 1);
 	}
 	buf[len + 1] = '\0';
@@ -45,24 +47,12 @@ char	*read_stdin(void)
 char	*read_file(char *path)
 {
 	char	*buf;
-	size_t	i;
-	size_t	len;
-	size_t	count;
 	int		fd;
 
-	buf = malloc(SIZE_BUF + 1);
-	i = 0;
-	len = SIZE_BUF;
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (v_errno(7));
-	while ((count = read(fd, buf, len)))
-	{
-		i += count;
-		len += SIZE_BUF;
-		buf = ft_realloc(buf, len + 1);
-	}
-	buf[len + 1] = '\0';
+	buf = ft_read(fd);
 	if (close(fd) == -1)
 		return (v_errno(8));
 	return (buf);
@@ -85,7 +75,7 @@ int		main(int ac, char **av)
 	}
 	else
 	{
-		str = read_stdin();
+		str = ft_read(STDIN_FILENO);
 		ft_putstr(str);
 		free(str);
 	}
