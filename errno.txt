@@ -8,3 +8,4 @@ Error numbers :
 	[6] = Malloc failed
 	[7] = File open() failed
 	[8] = File close() failed
+	[9] = Wrong parameters
