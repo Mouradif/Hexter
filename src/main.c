@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:36:56 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/29 19:53:21 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/29 21:07:09 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,47 @@
 
 int		g_errno = 0;
 
-char	*ft_read(int fd)
+void	ft_read_next(char buf, int *i, int *j)
 {
-	char	*buf;
-	size_t	i;
-	size_t	len;
-	size_t	count;
-
-	buf = malloc(BUF_SIZE + 1);
-	if (!buf)
-		return (v_errno(6));
-	i = 0;
-	len = BUF_SIZE;
-	while ((count = read(fd, buf, len)))
+	if (buf == '\n')
 	{
-		i += count;
-		len += BUF_SIZE;
-		buf = ft_realloc(buf, len + 1);
+		*j++;
+		*i = 0;
 	}
-	buf[len + 1] = '\0';
-	return (buf);
+	else
+	{
+		if (*i >= grid->width)
+			errno(3);
+		else
+			i++;
+	}
+}
+
+void	ft_read(t_grid *grid)
+{
+	char	buf;
+	size_t	i;
+	size_t	j;
+	int		err;
+
+	i = 0;
+	j = 1;
+	while ((err = read(fd, buf, len)))
+	{
+		if (err == -1)
+			errno(12);
+		if (g_errno)
+			return ;
+		else
+		{
+			if (buf == '\n' && i != grid->width)
+				errno(3);
+			else if (!ft_allowed_chars(grid, buf))
+				return ;
+			else
+				ft_read_next(buf, &i, &j);
+		}
+	}
 }
 
 char	*read_file(char *path)
@@ -62,6 +83,7 @@ int		main(int ac, char **av)
 {
 	char	*str;
 	int		i;
+	t_grid	*grid;
 
 	if (ac > 1)
 	{
@@ -75,7 +97,10 @@ int		main(int ac, char **av)
 	}
 	else
 	{
-		str = ft_read(STDIN_FILENO);
+		grid = init_grid(STDIN_FILENO);
+		set_params(grid)
+		read_first_line(grid);
+		ft_read(grid);
 		ft_putstr(str);
 		free(str);
 	}

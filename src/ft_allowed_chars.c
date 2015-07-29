@@ -6,11 +6,14 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 20:09:34 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/29 20:13:09 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/29 20:48:31 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_allowed_chars(t_grid *grid, char c)
 {
-	return (c == grid->obs || c == grid->empty);
+	if (c == grid->obs || c == grid->empty || c == '\n')
+		return (1);
+	else
+		return (errno(5));
 }
