@@ -1,0 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_set_params.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/07/29 18:18:21 by mkejji            #+#    #+#             */
+/*   Updated: 2015/07/29 18:18:23 by mkejji           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "bsq.h"
+#include "ft.h"
+#include "struct.h"
+
+void	ft_set_params(t_grid *grid)
+{
+	char				buf;
+	char				str[14];
+	unsigned int		ret;
+	size_t				i;
+
+	i = -1;
+	while ((ret = read(grid->fd, buf, 1)) && str[i] != '\n')
+	{
+		i++;
+		str[i] = buf;
+	}
+	grid->plein = str[i];
+	str[i] = '\0';
+	grid->obs = str[i - 1];
+	str[i - 1] = '\0';
+	grid->vide = str[i - 2];
+	str[i - 2] = '\0';
+	if (ft_strlen(str) != count_digits(str))
+		errno(9);
+	grid->height = ft_atoi(str);
+}
