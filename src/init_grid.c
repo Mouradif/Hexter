@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/28 13:55:29 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/29 08:49:53 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/29 08:57:49 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,12 @@ t_cell			**malloc_grid(size_t height, size_t width)
 			return (NULL);
 		while (i < width)
 		{	
-			grid[j][i] = malloc(height * sizeof(t_cell));
-			if (grid[j][i] == NULL)
-				return (NULL);
+			grid[j][i].index = 0;
 			i++;
 		}
 		j++;
 	}
-	return (NULL);
+	return (grid);
 }
 
 t_grid			*init_grid(size_t size, char *str, size_t pointer_char)
@@ -103,9 +101,9 @@ t_grid			*init_grid(size_t size, char *str, size_t pointer_char)
 		grid->plein = str[pointer_char + 2];
 		grid->grid = malloc_grid(size, i);
 		if (!(grid->grid))
-			return ((void*)errno(6));
+			return (v_errno(6));
 		return (grid);
 	}
 	else
-		return ((void*)errno(6));
+		return (v_errno(6));
 }

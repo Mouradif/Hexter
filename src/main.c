@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:36:56 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/29 08:37:13 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/29 09:01:30 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*read_file(char *path)
 	len = SIZE_BUF;
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-		return (errno(7));
+		return (v_errno(7));
 	while ((count = read(fd, buf, len)))
 	{
 		i += count;
@@ -64,7 +64,7 @@ char	*read_file(char *path)
 	}
 	buf[len + 1] = '\0';
 	if (close(fd) == -1)
-		return (errno(8));
+		return (v_errno(8));
 	return (buf);
 }
 

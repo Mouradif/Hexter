@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/28 15:27:00 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/29 08:30:13 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/29 08:59:33 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int			fill_grid(t_grid *grid)
 	size_t	i;
 	size_t	j;
 
+	str = grid->str;
 	j = 0;
 	while (j < grid->height)
 	{
@@ -41,7 +42,7 @@ int			fill_grid(t_grid *grid)
 		}
 		if (*str != '\n')
 			return (errno(3));
-		*str++;
+		str++;
 		j++;
 	}
 	return (1);

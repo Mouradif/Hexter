@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:38:51 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/29 08:38:09 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/29 08:58:16 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ int				ft_test_foreach(char *tab, int length, int (*f) (char));
 t_grid			*get_param(char *str);
 t_grid			*init_grid(size_t size, char *str, size_t pointer_char);
 int				errno(int err);
+void			*v_errno(int err);
 
 #endif
