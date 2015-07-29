@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/28 13:55:29 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/28 18:29:53 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/29 06:54:49 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ t_grid			*get_param(char *str)
 		size = size * 10 + str[i] - '0';
 		i++;
 	}
-	if (i == size_l - 3 && ft_foreach((str + i), 3, &is_printable)
+	if (i == size_l - 3 && ft_test_foreach((str + i), 3, &is_printable)
 			&& NOT_EQUAL(str[i], str[i + 1], str[i + 2]))
-		return (init_grid(size, str[i], str[i + 1], str[i + 2]));
+		return (init_grid(size, str, str[i + 4]));
 	else
 		return (NULL);
 }
@@ -47,10 +47,10 @@ t_grid			*init_grid(size_t size, char *str, size_t pointer_char)
 	grid = malloc(sizeof(t_grid));
 	if (grid)
 	{
-		grid->size = size;
+		grid->height = size;
 		grid->str = str;
 		grid->vide = str[pointer_char];
-		grid->obstacle = str[pointer_char + 1];
+		grid->obs = str[pointer_char + 1];
 		grid->plein = str[pointer_char + 2];
 		grid->grid = malloc(size * sizeof(t_cell *));
 		i = 0;
@@ -66,7 +66,7 @@ t_grid			*init_grid(size_t size, char *str, size_t pointer_char)
 	return (grid);
 }
 
-size_t	size_line(char *str)
+size_t			size_line(char *str)
 {
 	size_t ret;
 

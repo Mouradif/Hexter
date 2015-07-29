@@ -6,10 +6,11 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/28 15:38:07 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/28 16:32:38 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/29 06:18:57 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "struct.h"
 
 int		ft_cell_search(t_grid grid, size_t i, size_t j)
@@ -19,8 +20,8 @@ int		ft_cell_search(t_grid grid, size_t i, size_t j)
 	char d;
 	char o;
 
-	o = grid.obstacle;
-	if (i >= (grid.taille - 1) || j >= (grid.taille - 1))
+	o = grid.obs;
+	if (i >= (grid.width - 1) || j >= (grid.height - 1))
 		return (0);
 	else
 	{
@@ -39,7 +40,7 @@ void	ft_cell_increment(t_grid *grid, size_t i, size_t j)
 	char ul;
 	char o;
 
-	o = grid->obstacle;
+	o = grid->obs;
 	grid->grid[j][i].index += 1;
 	if (i > 0 && j > 0)
 	{
@@ -47,21 +48,20 @@ void	ft_cell_increment(t_grid *grid, size_t i, size_t j)
 		if (ul != o)
 			ft_cell_increment(grid, (i - 1), (j - 1));
 	}
-		
 }
 
 void	ft_remap(t_grid *grid)
 {
-	int i;
-	int j;
+	size_t i;
+	size_t j;
 
 	j = 0;
-	while (j < grid->size)
+	while (j < grid->height)
 	{
 		i = 0;
-		while (i < grid->size)
+		while (i < grid->width)
 		{
-			if (ft_cell_search(grid, i , j))
+			if (ft_cell_search(*grid, i, j))
 				ft_cell_increment(grid, i, j);
 		}
 	}

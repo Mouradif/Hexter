@@ -6,12 +6,13 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:42:32 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/27 18:19:38 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/29 06:50:06 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "bsq.h"
+#include "struct.h"
 
 char	*ft_realloc(char *buf, size_t size)
 {

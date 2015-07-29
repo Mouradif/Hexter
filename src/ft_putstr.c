@@ -6,13 +6,12 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/11 17:55:40 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/15 18:27:55 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/29 05:56:48 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-
-int ft_strlen(char *str);
+#include "ft.h"
 
 void	ft_putstr(char *str)
 {
