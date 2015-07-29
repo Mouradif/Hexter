@@ -6,10 +6,11 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 18:18:21 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/29 20:03:41 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/29 22:47:35 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include <stdlib.h>
 #include "bsq.h"
 #include "ft.h"
@@ -24,16 +25,19 @@ void	ft_set_params(t_grid *grid)
 	size_t				i;
 
 	i = -1;
-	while ((ret = read(grid->fd, buf, 1)) && str[i] != '\n')
+	buf = ' ';
+	while ((ret = read(grid->fd, &buf, 1)) && str[i] != '\n')
 	{
 		if (str[i] == '\0')
 		{
-			errno(11, grid);
+			errno(11);
 			ret = 0;
 		}
 		i++;
 		str[i] = buf;
 	}
+	if (str[i] == str[i - 1] || str[i] == str[i - 2] || str[i - 1] == str[i - 2])
+		errno(2);
 	if (!g_errno)
 	{
 		grid->plein = str[i];

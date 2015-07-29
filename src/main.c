@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:36:56 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/29 22:18:59 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/29 22:42:42 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <fcntl.h>
 #include "bsq.h"
 #include "ft.h"
+#include "err.h"
 
 #define BUF_SIZE (1024 * 300)
 
@@ -51,7 +52,7 @@ void	ft_read(t_grid *grid)
 
 	i = 0;
 	j = 1;
-	while ((err = read(grid->fd, buf, len)))
+	while ((err = read(grid->fd, &buf, 1)))
 	{
 		if (err == -1)
 			errno(12);
@@ -68,44 +69,29 @@ void	ft_read(t_grid *grid)
 		}
 	}
 }
+/*
+   char	*read_file(char *path)
+   {
+   char	*buf;
+   int		fd;
 
-char	*read_file(char *path)
+   fd = open(path, O_RDONLY);
+   if (fd == -1)
+   return (v_errno(7));
+   ft_read();
+   if (close(fd) == -1)
+   return (v_errno(8));
+   return (buf);
+   }
+   */
+int		main(void)
 {
-	char	*buf;
-	int		fd;
-
-	fd = open(path, O_RDONLY);
-	if (fd == -1)
-		return (v_errno(7));
-	buf = ft_read(fd);
-	if (close(fd) == -1)
-		return (v_errno(8));
-	return (buf);
-}
-
-int		main(int ac, char **av)
-{
-	char	*str;
-	int		i;
 	t_grid	*grid;
 
-	if (ac > 1)
-	{
-		i = 1;
-		while (i < ac)
-		{
-			str = read_file(av[i]);
-			ft_putstr(str);
-			free(str);
-		}
-	}
-	else
-	{
-		grid = init_grid(STDIN_FILENO);
-		set_params(grid)
-		read_first_line(grid);
-		ft_read(grid);
-		print_grid(grid);
-	}
+	grid = init_grid(STDIN_FILENO);
+	ft_set_params(grid);
+	read_first_line(grid);
+	ft_read(grid);
+	print_grid(grid);
 	return (0);
 }
