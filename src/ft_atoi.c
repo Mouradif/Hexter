@@ -3,35 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/07/11 21:12:39 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/11 22:46:21 by jlawson          ###   ########.fr       */
+/*   Created: 2015/07/29 02:49:59 by mkejji            #+#    #+#             */
+/*   Updated: 2015/07/29 02:50:01 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_atoi(char *str)
+int	count_digits(char *str)
 {
-	int	res;
 	int i;
-	int negative;
 
-	res = 0;
-	i = 0;
-	negative = 0;
-	if (*str == '-')
+	i = (str[0] == '-') ? 1 : 0;
+	while (str[i] <= '9' && str[i] >= '0')
+		i++;
+	return (i);
+}
+
+int	ft_power(int i, int exp)
+{
+	if (exp < 0)
+		return (0);
+	if (exp == 0)
+		return (1);
+	return (i * ft_power(i, exp - 1));
+}
+
+int	ft_atoi(char *str)
+{
+	int i;
+	int neg_pos;
+	int digits;
+	int result;
+
+	result = 0;
+	i = 0 ;
+	digits = count_digits(str);
+	digits = (str[0] == '-') ? digits - 1 : digits;
+	neg_pos = (str[0] == '-') ? -1 : 1;
+	str = (neg_pos == 1) ? str : str + 1;
+	while (i < digits)
 	{
-		negative = 1;
-		str++;
+		result +=  (str[i] - 48) * ft_power(10, digits - i - 1);
+		i++;
 	}
-	while (*str)
-	{
-		res = *str - '0' + res * 10;
-		str++;
-	}
-	if (negative)
-	{
-		res = 0 - res;
-	}
-	return (res);
+	return (result * neg_pos);
 }
