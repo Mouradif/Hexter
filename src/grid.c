@@ -6,28 +6,28 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 19:44:15 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/29 19:44:17 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/29 20:26:39 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "struct.h"
 
-int		ft_cell_search(t_grid grid, size_t i, size_t j)
+int		ft_cell_search(t_grid *grid, size_t i, size_t j)
 {
 	char r;
 	char dr;
 	char d;
 	char o;
 
-	o = grid.obs;
-	if (i >= (grid.width - 1) || j >= (grid.height - 1))
+	o = grid->obs;
+	if (i >= (grid->width - 1) || j >= (grid->height - 1))
 		return (0);
 	else
 	{
-		r = grid.grid[j][i + 1].cell;
-		dr = grid.grid[j + 1][i + 1].cell;
-		d = grid.grid[j + 1][i].cell;
+		r = grid->grid[j][i + 1].cell;
+		dr = grid->grid[j + 1][i + 1].cell;
+		d = grid->grid[j + 1][i].cell;
 		if (r == o || dr == o || d == o)
 			return (0);
 		else
