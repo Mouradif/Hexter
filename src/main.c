@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:36:56 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/29 07:06:31 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/29 08:37:13 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,6 @@
 #define SIZE_BUF (1024 * 300)
 
 int		g_errno;
-
-int		errno(int err)
-{
-	g_errno = err;
-	return (0);
-}
-
-char	*char_errno(int err)
-{
-	g_errno = err;
-	return (NULL);
-}
 
 char	*read_stdin(void)
 {
@@ -67,7 +55,7 @@ char	*read_file(char *path)
 	len = SIZE_BUF;
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-		return (char_errno(7));
+		return (errno(7));
 	while ((count = read(fd, buf, len)))
 	{
 		i += count;
@@ -76,7 +64,7 @@ char	*read_file(char *path)
 	}
 	buf[len + 1] = '\0';
 	if (close(fd) == -1)
-		return (char_errno(8));
+		return (errno(8));
 	return (buf);
 }
 

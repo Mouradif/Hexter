@@ -6,7 +6,7 @@
 #    By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/07/29 05:57:20 by mkejji            #+#    #+#              #
-#    Updated: 2015/07/29 06:07:52 by mkejji           ###   ########.fr        #
+#    Updated: 2015/07/29 08:51:16 by mkejji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC = src/bsq.c \
 	  src/ft_realloc.c \
 	  src/ft_strlen.c \
 	  src/grid.c \
+	  src/error_manager.c \
 	  src/main.c
 FLAGS = -Wall -Werror -Wextra
 

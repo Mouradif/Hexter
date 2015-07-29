@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/28 15:27:00 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/29 06:57:03 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/29 08:30:13 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,7 @@ t_grid		*get_grid(char *str)
 	t_grid *grid;
 
 	grid = get_param(str);
-	free(str);
 	return (grid);
-}
-
-char		*get_first_line(char *str)
-{
-	unsigned int i;
-
-	i = 0;
-	while (str[i] && str[i] != '\n')
-		i++;
-	if (!str[i])
-		return (0);
-	return (str + i + 1);
 }
 
 int			fill_grid(t_grid *grid)
@@ -40,19 +27,22 @@ int			fill_grid(t_grid *grid)
 	size_t	i;
 	size_t	j;
 
-	str = get_first_line(grid->str);
 	j = 0;
 	while (j < grid->height)
 	{
 		i = 0;
-		while (*str && *str != '\n' && i < grid->width)
+		while (i < grid->width)
 		{
+			if (*str == '\n' || *str == '\0')
+				return (errno(3));
 			grid->grid[j][i].cell = *str;
 			str++;
 			i++;
 		}
-		if (i < grid->width)
-			return (1);
+		if (*str != '\n')
+			return (errno(3));
+		*str++;
+		j++;
 	}
-	return (0);
+	return (1);
 }
