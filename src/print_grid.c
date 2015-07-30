@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 21:55:50 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/30 14:18:49 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/30 18:56:49 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	print_grid(t_grid *grid)
 		i = 0;
 		while (i < grid->width)
 		{
-			ft_putchar(grid->grid[j][i].cell);
+			ft_putchar(grid->g[j][i].cell);
 			i++;
 		}
 		ft_putchar('\n');

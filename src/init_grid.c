@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/28 13:55:29 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 17:06:25 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/30 18:55:34 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,25 @@ t_grid			*init_grid(int fd)
 	grid = malloc(sizeof(t_grid));
 	grid->fd = fd;
 	grid->str = NULL;
-	grid->grid = NULL;
+	grid->g = NULL;
 	return (grid);
+}
+
+void			free_grid(t_grid *grid)
+{
+	unsigned int i;
+	if (grid)
+	{
+		if (grid->g)
+		{
+			while (i < grid->height)
+			{
+				if (grid->g[i])
+					free(grid->g[i]);
+				i++;
+			}
+			free(grid->g);
+		}
+		free(grid);
+	}
 }

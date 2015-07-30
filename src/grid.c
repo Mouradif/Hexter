@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 19:44:15 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/29 22:15:58 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 18:57:19 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int		ft_cell_search(t_grid *grid, size_t i, size_t j)
 		return (0);
 	else
 	{
-		r = grid->grid[j][i + 1].cell;
-		dr = grid->grid[j + 1][i + 1].cell;
-		d = grid->grid[j + 1][i].cell;
+		r = grid->g[j][i + 1].cell;
+		dr = grid->g[j + 1][i + 1].cell;
+		d = grid->g[j + 1][i].cell;
 		if (r == o || dr == o || d == o)
 			return (0);
 		else
@@ -41,10 +41,10 @@ void	ft_cell_increment(t_grid *grid, size_t i, size_t j)
 	char o;
 
 	o = grid->obs;
-	grid->grid[j][i].index += 1;
+	grid->g[j][i].index += 1;
 	if (i > 0 && j > 0)
 	{
-		ul = grid->grid[i - 1][j - 1].cell;
+		ul = grid->g[i - 1][j - 1].cell;
 		if (ul != o)
 			ft_cell_increment(grid, (i - 1), (j - 1));
 	}

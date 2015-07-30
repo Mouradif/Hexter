@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 18:18:21 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/30 17:02:21 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 18:56:23 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_set_params(t_grid *grid)
 		if (ft_strlen(str) != count_digits(str))
 			errno(9);
 		grid->height = ft_atoi(str);
-		grid->grid = malloc(sizeof(t_cell*) * grid->height);
+		grid->g = malloc(sizeof(t_cell*) * grid->height);
 	}
 	free(str);
 }
