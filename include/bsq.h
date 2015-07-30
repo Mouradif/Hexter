@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:38:51 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 20:04:16 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 21:30:42 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 # include "struct.h"
 
 int		ft_allowed_chars(t_grid *grid, char c);
-void	read_file(char *path);
+int		read_file(char *path);
+void	ft_execute(int fd);
 void	ft_read(t_grid *grid);
 void	ft_cell_increment(t_grid *grid, size_t i, size_t j);
 void	ft_remap(t_grid *grid);
