@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:36:56 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 14:19:39 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/30 14:48:31 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,53 +23,30 @@
 
 int		g_errno = 0;
 
-void	ft_read_next(t_grid *grid, char buf, size_t *i, size_t *j)
-{
-	if (buf == '\n')
-	{
-		*j = *j + 1;
-		*i = 0;
-	}
-	else
-	{
-		if (*i != grid->width)
-			errno(3);
-		else
-		{
-			if (*i == 0)
-				grid->grid[*j] = malloc(sizeof(t_cell) * grid->width);
-			grid->grid[*j][*i].cell = buf;
-			grid->grid[*j][*i].index = (buf == grid->obs) ? -1 : 0;
-			i++;
-		}
-	}
-}
+void	map_line();
 
 void	ft_read(t_grid *grid)
 {
 	char	buf;
-	size_t	i;
+	char	*str;
 	size_t	j;
 	int		err;
 
-	i = 0;
 	j = 1;
-	while ((err = read(grid->fd, &buf, 1)))
+	while ((str = ft_getline(grid->fd)))
 	{
-		if (err == -1)
-			errno(12);
-		if (g_errno)
-			return ;
-		else
+		if (j >= grid->height)
 		{
-			if (buf == '\n' && i != grid->width)
-				errno(3);
-			else if (!ft_allowed_chars(grid, buf))
-				return ;
-			else
-				ft_read_next(grid, buf, &i, &j);
+			errno(13);
+			free(str);
+			return ;
 		}
+		map_line(grid, str, j);
+		free(str);
+		j++;
 	}
+	if (j < grid->height)
+		errno(13);
 }
 /*
    char	*read_file(char *path)
@@ -94,6 +71,9 @@ int		main(void)
 	ft_set_params(grid);
 	read_first_line(grid);
 	ft_read(grid);
-	print_grid(grid);
+	if (errno)
+		ft_putstr("erreur\n");
+	else
+		print_grid(grid);
 	return (0);
 }
