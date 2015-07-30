@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/30 21:49:31 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/30 22:01:23 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 22:24:04 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ t_point find_max(t_grid *grid)
 		i = 0;
 		while (i < grid->width)
 		{
-			if (grid->g[j][i].index > max)
+			if (grid->g[j][i].index > point.max)
 			{
-				max = grid->g[j][i].index;
+				point.max = grid->g[j][i].index;
 				point.x = i;
-				point.y = j
+				point.y = j;
 			}
 			i++;
 		}
