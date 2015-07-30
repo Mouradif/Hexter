@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:36:56 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 22:51:27 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 22:59:59 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	ft_read(t_grid *grid)
 		free(str);
 		j++;
 	}
+	free(str);
 	if (j < grid->height)
 		ft_errno(13);
 }
