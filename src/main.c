@@ -27,15 +27,17 @@ void	ft_read_next(t_grid *grid, char buf, size_t *i, size_t *j)
 {
 	if (buf == '\n')
 	{
-		(*j)++;
+		*j = *j + 1;
 		*i = 0;
 	}
 	else
 	{
-		if (*i >= grid->width)
+		if (*i != grid->width)
 			errno(3);
 		else
 		{
+			if (*i == 1)
+				grid->grid[*j] = malloc(sizeof(t_cell) * grid->width);
 			grid->grid[*j][*i].cell = buf;
 			grid->grid[*j][*i].index = (buf == grid->obs) ? -1 : 0;
 			i++;

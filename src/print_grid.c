@@ -28,12 +28,15 @@ void	print_grid(t_grid *grid)
 	ft_putstr("] [");
 	ft_putchar(grid->plein);
 	ft_putstr("]\n");
-	j = -1;
-	while (++j < grid->height)
+	j = 0;
+	while (j < grid->height)
 	{
-		i = -1;
+		i = 0;
 		while (++i < grid->width)
+		{
 			ft_putchar(grid->grid[j][i].cell);
+		}
 		ft_putchar('\n');
+		j++;
 	}
 }

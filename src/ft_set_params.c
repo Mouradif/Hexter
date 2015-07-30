@@ -21,7 +21,6 @@
 void	ft_set_params(t_grid *grid)
 {
 	char				str[14];
-	char				c;
 	unsigned int		ret;
 	size_t				i;
 
@@ -35,18 +34,16 @@ void	ft_set_params(t_grid *grid)
 		}
 		i++;
 	}
-	c = 0;
-	read(grid->fd, &c, 1);
-	if (EQUAL(str[i], str[i - 1], str[i - 2]))
+	if (EQUAL(str[i - 1], str[i - 2], str[i - 3]))
 		errno(2);
 	if (!g_errno)
 	{
-		grid->plein = str[i];
-		str[i] = '\0';
-		grid->obs = str[i - 1];
+		grid->plein = str[i - 1];
 		str[i - 1] = '\0';
-		grid->vide = str[i - 2];
+		grid->obs = str[i - 2];
 		str[i - 2] = '\0';
+		grid->vide = str[i - 3];
+		str[i - 3] = '\0';
 		if (ft_strlen(str) != count_digits(str))
 			errno(9);
 		grid->height = ft_atoi(str);
