@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:38:51 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 22:22:34 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 22:53:57 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int			map_line(t_grid *grid, char *str, size_t j);
 void		free_grid(t_grid *grid);
 void		draw_square(t_grid *grid, size_t x, size_t y, size_t size);
 t_point		find_max(t_grid *grid);
+void		test_full(t_grid *grid);
 
 #endif
