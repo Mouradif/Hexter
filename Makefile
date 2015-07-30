@@ -6,7 +6,7 @@
 #    By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/07/29 05:57:20 by mkejji            #+#    #+#              #
-#    Updated: 2015/07/30 18:34:55 by mkejji           ###   ########.fr        #
+#    Updated: 2015/07/30 18:57:46 by mkejji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRC = src/bsq.c \
 	  src/ft_set_params.c \
 	  src/read_first_line.c \
 	  src/init_grid.c \
-	  src/ft_getline.c
+	  src/ft_getline.c \
+	  src/draw_square.c
 
 FLAGS = -Wall -Werror -Wextra
 
@@ -38,7 +39,7 @@ debug: $(SRC)
 	gcc $(FLAGS) -g -Iinclude $(SRC) src/main_debug.c -o $(NAME)-debug
 
 test: $(SRC)
-	gcc $(FLAGS) -Iinclude $(SRC) src/test.c src/main_test.c -o $(NAME)-test
+	gcc $(FLAGS) -Iinclude $(SRC) src/main_test.c -o $(NAME)-test
 
 clean:
 	rm -f $(NAME)

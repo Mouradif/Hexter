@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:38:51 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 17:50:40 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/30 18:56:58 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ void	print_grid(t_grid *grid);
 void	read_first_line(t_grid *grid);
 int		ft_getline(char **buf, int fd);
 int		map_line(t_grid *grid, char *str, size_t j);
+void	draw_square(t_grid *grid, size_t x, size_t, size_t size);
 
 #endif
