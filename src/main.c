@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:36:56 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 21:36:18 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/30 22:07:05 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ int		read_file(char *path)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (ft_errno(7));
-	if (close(fd) == -1)
-		return (ft_errno(8));
 	return (fd);
 }
 
@@ -71,6 +69,8 @@ void	ft_execute(int fd)
 		ft_putstr("Map error\n");
 	else
 		print_grid(grid);
+	if (fd > 0)
+		close(fd);
 	free_grid(grid);
 }
 
@@ -81,15 +81,19 @@ int		main(int ac, char **av)
 
 	if (ac > 1)
 	{
-		i = 0;
+		i = 1;
 		while (i < ac)
 		{
-			fd = read_file(av[i]);
+			fd = open(av[i]);
+			if (fd == -1)
+				ft_errno(8);
 			if (!g_errno)
 				ft_execute(fd);
 			else
+			{
 				ft_putnbr(g_errno);
 				ft_putstr("Map error\n");
+			}
 			i++;
 		}
 	}
