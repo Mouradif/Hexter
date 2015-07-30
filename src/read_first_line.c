@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 19:16:14 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/30 19:34:49 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/30 20:46:16 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	read_first_line(t_grid *grid)
 			return ;
 		}
 		grid->g[0][i].cell = str[i];
-		grid->g[0][i].index = (str[i] == grid->obs) ? -1 : 0;
+		grid->g[0][i].index = (str[i] == grid->obs) ? 0 : 1;
+		grid->g[0][i].sum = 0;
 		i++;
 	}
 	free(str);
