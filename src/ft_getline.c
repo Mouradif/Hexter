@@ -6,13 +6,13 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/30 12:59:20 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 16:53:01 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/30 22:50:01 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
-#include <errno.h>
+#include "err.h"
 #include "ft.h"
 #include "bsq.h"
 
@@ -53,6 +53,8 @@ int		ft_getline(char **buf, int fd)
 			}
 			count = read(fd, (*buf + i), 1);
 		}
+		if (i > 0 && (*buf)[i] != '\n')
+			return (ft_errno(6));
 		(*buf)[i] = 0;
 	}
 	return (i);
