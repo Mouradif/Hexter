@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:38:51 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/29 22:33:38 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 13:36:03 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ int		ft_cell_search(t_grid *grid, size_t i, size_t j);
 void	ft_set_params(t_grid *grid);
 char	*ft_realloc(char *buf, size_t size);
 int		is_printable(char c);
-t_grid	*init_grid(int fd);	
+t_grid	*init_grid(int fd);
 void	print_grid(t_grid *grid);
 void	read_first_line(t_grid *grid);
+char	*ft_getline(int fd);
 
 #endif
