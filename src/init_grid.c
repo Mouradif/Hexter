@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/28 13:55:29 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 19:20:55 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/30 19:42:45 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void			free_grid(t_grid *grid)
 	{
 		if (grid->g)
 		{
+			i = 0;
 			while (i < grid->height)
 			{
 				if (grid->g[i])
