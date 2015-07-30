@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:42:32 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/29 22:09:52 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 12:46:00 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_realloc(char *buf, size_t size)
 	{
 		len = ft_strlen(buf);
 		ret = malloc(len + size + 1);
-		ft_cpy(ret, buf, len + 1);
+		ft_cpy(ret, buf, size + len + 1);
 		free(buf);
 	}
 	return (ret);
