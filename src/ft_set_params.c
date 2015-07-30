@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 18:18:21 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/30 12:50:17 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 12:53:09 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	ft_set_params(t_grid *grid)
 		errno(2);
 	if (!g_errno)
 	{
-		grid->width = i;
 		grid->plein = str[i];
 		str[i] = '\0';
 		grid->obs = str[i - 1];
