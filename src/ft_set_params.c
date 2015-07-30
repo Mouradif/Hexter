@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 18:18:21 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/30 12:47:07 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 12:50:17 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "bsq.h"
 #include "ft.h"
 #include "struct.h"
-#include "err.h"i
+#include "err.h"
 #define EQUAL(a,b,c) (a == b || b == c || a == c)
 
 void	ft_set_params(t_grid *grid)
@@ -33,7 +33,6 @@ void	ft_set_params(t_grid *grid)
 			break;
 		}
 		i++;
-		str[i] = buf;
 	}
 	if (EQUAL(str[i], str[i - 1], str[i - 2]))
 		errno(2);
