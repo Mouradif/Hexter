@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:36:56 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/29 22:42:42 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 14:19:39 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_read_next(t_grid *grid, char buf, size_t *i, size_t *j)
 			errno(3);
 		else
 		{
-			if (*i == 1)
+			if (*i == 0)
 				grid->grid[*j] = malloc(sizeof(t_cell) * grid->width);
 			grid->grid[*j][*i].cell = buf;
 			grid->grid[*j][*i].index = (buf == grid->obs) ? -1 : 0;

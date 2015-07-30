@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 18:18:21 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/30 12:58:47 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/30 14:13:03 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,28 +20,18 @@
 
 void	ft_set_params(t_grid *grid)
 {
-	char				str[14];
-	unsigned int		ret;
+	char				*str;
 	size_t				i;
 
 	i = 0;
-	while ((ret = read(grid->fd, (str + i), 1)) && str[i] != '\n')
-	{
-		if (str[i] == '\0')
-		{
-			errno(11);
-			break;
-		}
-		i++;
-	}
+	str = ft_getline(grid->fd);
+	i = ft_strlen(str) - 1;
 	if (EQUAL(str[i - 1], str[i - 2], str[i - 3]))
 		errno(2);
 	if (!g_errno)
 	{
 		grid->plein = str[i - 1];
-		str[i - 1] = '\0';
 		grid->obs = str[i - 2];
-		str[i - 2] = '\0';
 		grid->vide = str[i - 3];
 		str[i - 3] = '\0';
 		if (ft_strlen(str) != count_digits(str))
