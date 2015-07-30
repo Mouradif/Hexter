@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 21:22:48 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 18:54:26 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/30 20:47:26 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ typedef struct		s_cell
 {
 	char			cell;
 	unsigned int	index;
+	unsigned int	sum;
 }					t_cell;
 
 typedef struct		s_grid

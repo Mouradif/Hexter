@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 19:44:15 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 20:11:16 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 20:25:35 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	ft_cell_increment(t_grid *grid, size_t i, size_t j)
 	if (i > 0 && j > 0)
 	{
 		ul = grid->g[i - 1][j - 1].cell;
-		if (ul != o)
-			ft_cell_increment(grid, (i - 1), (j - 1));
+		//if (ul != o)
+			//ft_cell_increment(grid, (i - 1), (j - 1));
 	}
 }
 

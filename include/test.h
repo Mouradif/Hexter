@@ -6,13 +6,14 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/30 18:23:27 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/30 19:35:21 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 20:28:33 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TEST_H
 # define TEST_H
 
+void	print_map(t_grid *grid);
 void	print_index(t_grid *grid);
 
 #endif

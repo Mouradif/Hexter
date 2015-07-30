@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/30 18:54:37 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/30 20:04:36 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 20:21:02 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ int		main(void)
 		ft_read(grid);
 	if (!g_errno)
 	{
-		draw_square(grid, 2, 2, 4);
 		ft_remap(grid);
 	}	
 	if (g_errno)
