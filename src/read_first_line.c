@@ -19,25 +19,19 @@ void	read_first_line(t_grid *grid)
 {
 	char	*str;
 	int		ret;
-	int		i;
+	size_t	i;
 
+	str = ft_getline(grid->fd);
+	grid->width = ft_strlen(str);
+	grid->grid[0] = malloc(sizeof(t_cell) * grid->width);
 	i = 0;
-	str = malloc(sizeof(char) * 2);
-	str[1] = '\0';
-	while ((ret = read(grid->fd, (str + i), 1)) && str[i] && str[i] != '\n')
+	while (i < grid->width)
 	{
 		if (!ft_allowed_chars(grid, str[i]))
 			return ;
-		str = ft_realloc(str, 1);
-		i++;
-	}
-	grid->width = i;
-	grid->grid[0] = malloc(sizeof(t_cell) * i);
-	i = -1;
-	while (++i < (int)grid->width)
-	{
 		grid->grid[0][i].cell = str[i];
 		grid->grid[0][i].index = (str[i] == grid->obs) ? -1 : 0;
+		i++;
 	}
 	free(str);
 }
