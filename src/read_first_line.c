@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 19:16:14 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/29 22:44:02 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 12:24:16 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,11 @@ void	read_first_line(t_grid *grid)
 	str = NULL;
 	i = 0;
 	buf = ' ';
+	str = malloc(sizeof(char) * 2);
 	while ((ret = read(grid->fd, &buf, 1)) && str[i] && str[i] != '\n')
 	{
 		if (!ft_allowed_chars(grid, buf))
 			return ;
-		if (!str)
-			str = malloc(sizeof(char) * 2);
 		else
 			str = ft_realloc(str, 1);
 		str[i++] = buf;
@@ -42,7 +41,7 @@ void	read_first_line(t_grid *grid)
 	while (++i < (int)grid->width)
 	{
 		grid->grid[0][i].cell = str[i];
-		grid->grid[0][i].index = (str[i] == grid->obs) ? -1 : 0;	
+		grid->grid[0][i].index = (str[i] == grid->obs) ? -1 : 0;
 	}
 	free(str);
 }
