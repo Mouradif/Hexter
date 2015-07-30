@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 21:22:48 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 21:52:20 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 21:58:45 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ typedef struct		s_point
 {
 	unsigned int	x;
 	unsigned int	y;
+	unsigned int	max;
 }					t_point;
 
 typedef struct		s_cell
