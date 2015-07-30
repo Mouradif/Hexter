@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:36:56 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 17:04:12 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 17:52:51 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 #define BUF_SIZE (1024 * 300)
 
 int		g_errno = 0;
-
-void	map_line();
 
 void	ft_read(t_grid *grid)
 {
