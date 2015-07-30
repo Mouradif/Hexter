@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/30 21:49:31 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/30 22:24:04 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 22:58:55 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_point find_max(t_grid *grid)
 {
-	t_point 		point;
-	unsigned int 	i;
+	t_point			point;
+	unsigned int	i;
 	unsigned int	j;
 
 	j = 0;

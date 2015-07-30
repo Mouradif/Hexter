@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/28 13:55:29 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 19:42:45 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/30 23:05:48 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_grid			*init_grid(int fd)
 void			free_grid(t_grid *grid)
 {
 	unsigned int i;
+
 	if (grid)
 	{
 		if (grid->g)

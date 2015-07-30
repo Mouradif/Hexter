@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 19:44:15 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 21:48:06 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 23:05:36 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int		ft_cell_search(t_grid *grid, size_t x, size_t y)
 	if ((x < (grid->width - 1)) && (y < (grid->height - 1)))
 		res[2] = (grid->g[y + 1][x + 1].index);
 	return (ft_min(res, 3) + 1);
-
 }
+
 void	ft_remap(t_grid *grid)
 {
 	size_t i;

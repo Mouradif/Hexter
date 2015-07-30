@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/30 12:59:20 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 22:50:01 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/30 23:04:31 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int		ft_getline(char **buf, int fd)
 	if (*buf)
 	{
 		ft_memset(*buf, size + 1);
-		count = read(fd, (*buf + i), 1);
-		while (count > 0 && (*buf)[i] && (*buf)[i] != '\n')
+		while (count = read(fd, (*buf + i), 1) && (*buf)[i]
+				&& (*buf)[i] != '\n')
 		{
 			i += count;
 			if (i == size)
@@ -51,7 +51,6 @@ int		ft_getline(char **buf, int fd)
 				size += BUFFER_SIZE;
 				*buf = ft_realloc(*buf, size + 1);
 			}
-			count = read(fd, (*buf + i), 1);
 		}
 		if (i > 0 && (*buf)[i] != '\n')
 			return (ft_errno(6));
