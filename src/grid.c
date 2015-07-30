@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 19:44:15 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 18:57:19 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/30 20:11:16 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	ft_remap(t_grid *grid)
 		{
 			if (ft_cell_search(grid, i, j))
 				ft_cell_increment(grid, i, j);
+			i++;
 		}
+		j++;
 	}
 }
