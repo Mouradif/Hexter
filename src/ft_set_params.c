@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 18:18:21 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/30 12:53:09 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 12:58:47 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 void	ft_set_params(t_grid *grid)
 {
 	char				str[14];
+	char				c;
 	unsigned int		ret;
 	size_t				i;
 
@@ -34,6 +35,8 @@ void	ft_set_params(t_grid *grid)
 		}
 		i++;
 	}
+	c = 0;
+	read(grid->fd, &c, 1);
 	if (EQUAL(str[i], str[i - 1], str[i - 2]))
 		errno(2);
 	if (!g_errno)

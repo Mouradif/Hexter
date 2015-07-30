@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 19:16:14 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/30 12:46:27 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/30 12:54:57 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	read_first_line(t_grid *grid)
 		if (!ft_allowed_chars(grid, str[i]))
 			return ;
 		str = ft_realloc(str, 1);
+		i++;
 	}
 	grid->width = i;
 	grid->grid[0] = malloc(sizeof(t_cell) * i);
