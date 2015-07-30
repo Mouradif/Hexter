@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:36:56 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 22:48:03 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 22:51:27 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_read(t_grid *grid)
 	size_t	j;
 
 	j = 1;
-	while (ft_getline(&str, grid->fd))
+	while (ft_getline(&str, grid->fd) && !g_errno)
 	{
 		if (j >= grid->height)
 		{
