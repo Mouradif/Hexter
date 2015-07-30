@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/30 12:59:20 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 16:45:27 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/30 16:51:30 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	ft_memset(char *buf, size_t size)
 
 int		ft_getline(char **buf, int fd)
 {
-	char		*buf;
 	size_t		count;
 	size_t		size;
 	size_t		i;
@@ -56,5 +55,5 @@ int		ft_getline(char **buf, int fd)
 		}
 		(*buf)[i] = 0;
 	}
-	return (count);
+	return (i);
 }
