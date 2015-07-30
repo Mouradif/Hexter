@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 18:18:21 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/30 14:13:03 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/30 17:02:21 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,13 @@ void	ft_set_params(t_grid *grid)
 	char				*str;
 	size_t				i;
 
-	i = 0;
-	str = ft_getline(grid->fd);
-	i = ft_strlen(str) - 1;
+	i = ft_getline(&str, grid->fd);
+	if (!i)
+	{
+		errno(1);
+		free(str);
+		return ;
+	}
 	if (EQUAL(str[i - 1], str[i - 2], str[i - 3]))
 		errno(2);
 	if (!g_errno)
@@ -39,4 +43,5 @@ void	ft_set_params(t_grid *grid)
 		grid->height = ft_atoi(str);
 		grid->grid = malloc(sizeof(t_cell*) * grid->height);
 	}
+	free(str);
 }
