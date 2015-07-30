@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 18:18:21 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/29 22:47:35 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 12:47:07 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,31 @@
 #include "bsq.h"
 #include "ft.h"
 #include "struct.h"
-#include "err.h"
+#include "err.h"i
+#define EQUAL(a,b,c) (a == b || b == c || a == c)
 
 void	ft_set_params(t_grid *grid)
 {
-	char				buf;
 	char				str[14];
 	unsigned int		ret;
 	size_t				i;
 
-	i = -1;
-	buf = ' ';
-	while ((ret = read(grid->fd, &buf, 1)) && str[i] != '\n')
+	i = 0;
+	while ((ret = read(grid->fd, (str + i), 1)) && str[i] != '\n')
 	{
 		if (str[i] == '\0')
 		{
 			errno(11);
-			ret = 0;
+			break;
 		}
 		i++;
 		str[i] = buf;
 	}
-	if (str[i] == str[i - 1] || str[i] == str[i - 2] || str[i - 1] == str[i - 2])
+	if (EQUAL(str[i], str[i - 1], str[i - 2]))
 		errno(2);
 	if (!g_errno)
 	{
+		grid->width = i;
 		grid->plein = str[i];
 		str[i] = '\0';
 		grid->obs = str[i - 1];
