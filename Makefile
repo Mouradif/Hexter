@@ -6,7 +6,7 @@
 #    By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/07/29 05:57:20 by mkejji            #+#    #+#              #
-#    Updated: 2015/07/30 18:57:46 by mkejji           ###   ########.fr        #
+#    Updated: 2015/07/30 19:40:16 by mkejji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,13 +33,13 @@ FLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME): $(SRC)
-	gcc $(FLAGS) -Iinclude $(SRC) src/main.c -o $(NAME)
+	gcc $(FLAGS) -Iinclude $(SRC) -o $(NAME) src/main.c
 
 debug: $(SRC)
-	gcc $(FLAGS) -g -Iinclude $(SRC) src/main_debug.c -o $(NAME)-debug
+	gcc $(FLAGS) -g -Iinclude $(SRC) -o $(NAME)-debug src/main_debug.c
 
 test: $(SRC)
-	gcc $(FLAGS) -Iinclude $(SRC) src/main_test.c -o $(NAME)-test
+	gcc $(FLAGS) -Iinclude $(SRC) src/print_index.c -o $(NAME)-test src/main_test.c
 
 clean:
 	rm -f $(NAME)
