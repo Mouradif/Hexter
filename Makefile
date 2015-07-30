@@ -6,7 +6,7 @@
 #    By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/07/29 05:57:20 by mkejji            #+#    #+#              #
-#    Updated: 2015/07/30 14:13:58 by jlawson          ###   ########.fr        #
+#    Updated: 2015/07/30 17:19:20 by mkejji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,10 @@ $(NAME): $(SRC)
 	gcc $(FLAGS) -Iinclude $(SRC) -o $(NAME)
 
 debug: $(SRC)
-	gcc $(FLAGS) -g -Iinclude $(SRC) -o $(NAME)
+	gcc $(FLAGS) -g -Iinclude $(SRC) -o $(NAME)-debug
+
+test: $(SRC)
+	gcc $(FLAGS) -Iinclude $(SRC) src/test.c -o $(NAME)-test
 
 clean:
 	rm -f $(NAME)
