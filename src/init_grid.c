@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/28 13:55:29 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 12:06:37 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/30 17:06:25 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ t_grid			*init_grid(int fd)
 
 	grid = malloc(sizeof(t_grid));
 	grid->fd = fd;
+	grid->str = NULL;
+	grid->grid = NULL;
 	return (grid);
 }
