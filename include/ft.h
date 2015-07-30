@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/15 15:54:52 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/29 22:37:52 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 21:28:22 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int		ft_atoi(char *str);
 int		count_digits(char *str);
 int		ft_strlen(char *str);
 void	ft_sort_integer_table(int *tab, int size);
+int		ft_min(int *range, int size);
 
 #endif

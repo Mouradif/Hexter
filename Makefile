@@ -6,7 +6,7 @@
 #    By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/07/29 05:57:20 by mkejji            #+#    #+#              #
-#    Updated: 2015/07/30 19:40:16 by mkejji           ###   ########.fr        #
+#    Updated: 2015/07/30 21:30:23 by mkejji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ SRC = src/bsq.c \
 	  src/read_first_line.c \
 	  src/init_grid.c \
 	  src/ft_getline.c \
-	  src/draw_square.c
+	  src/draw_square.c \
+	  src/ft_min.c
 
 FLAGS = -Wall -Werror -Wextra
 

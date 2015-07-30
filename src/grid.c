@@ -6,50 +6,34 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 19:44:15 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 20:25:35 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 21:33:19 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "struct.h"
+#include "ft.h"
 
-int		ft_cell_search(t_grid *grid, size_t i, size_t j)
+int		ft_cell_search(t_grid *grid, size_t x, size_t y)
 {
-	char r;
-	char dr;
-	char d;
-	char o;
+	int res[3];
 
-	o = grid->obs;
-	if (i >= (grid->width - 1) || j >= (grid->height - 1))
+	if (!grid->g[y][x].index)
 		return (0);
-	else
-	{
-		r = grid->g[j][i + 1].cell;
-		dr = grid->g[j + 1][i + 1].cell;
-		d = grid->g[j + 1][i].cell;
-		if (r == o || dr == o || d == o)
-			return (0);
-		else
-			return (1);
-	}
+	res[0] = 0;
+	res[1] = 0;
+	res[2] = 0;
+	if (size > (grid->width - x) || size > (grid->height - y))
+		return (0);
+	if (x < (grid->width - 1))
+		res[0] = (grid->g[y][x + 1].index);
+	if (y < (grid->height - 1))
+		res[1] = (grid->g[y + 1][x].index);
+	if ((x < (grid->width - 1)) && (y < (grid->height - 1)))
+		res[2] = (grid->g[y + 1][x + 1].index);
+	return (ft_min(res, 3) + 1);
+
 }
-
-void	ft_cell_increment(t_grid *grid, size_t i, size_t j)
-{
-	char ul;
-	char o;
-
-	o = grid->obs;
-	grid->g[j][i].index += 1;
-	if (i > 0 && j > 0)
-	{
-		ul = grid->g[i - 1][j - 1].cell;
-		//if (ul != o)
-			//ft_cell_increment(grid, (i - 1), (j - 1));
-	}
-}
-
 void	ft_remap(t_grid *grid)
 {
 	size_t i;
@@ -61,8 +45,7 @@ void	ft_remap(t_grid *grid)
 		i = 0;
 		while (i < grid->width)
 		{
-			if (ft_cell_search(grid, i, j))
-				ft_cell_increment(grid, i, j);
+			ft_cell_increment(grid, i, j);
 			i++;
 		}
 		j++;
