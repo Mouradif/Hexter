@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/07/30 18:54:37 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/30 20:21:02 by mkejji           ###   ########.fr       */
+/*   Created: 2015/07/30 22:10:58 by mkejji            #+#    #+#             */
+/*   Updated: 2015/07/30 22:16:31 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #include "bsq.h"
 #include "ft.h"
 #include "err.h"
-#include "test.h"
 
 #define BUF_SIZE (1024 * 300)
 
@@ -45,42 +44,66 @@ void	ft_read(t_grid *grid)
 	if (j < grid->height)
 		ft_errno(13);
 }
-/*
-   char	*read_file(char *path)
-   {
-   char	*buf;
-   int		fd;
 
-   fd = open(path, O_RDONLY);
-   if (fd == -1)
-   return (v_errno(7));
-   ft_read();
-   if (close(fd) == -1)
-   return (v_errno(8));
-   return (buf);
-   }
-   */
-int		main(void)
+int		read_file(char *path)
+{
+	int		fd;
+
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		return (ft_errno(7));
+	return (fd);
+}
+
+void	ft_execute(int fd)
 {
 	t_grid	*grid;
+	t_point	point;
 
-	grid = init_grid(STDIN_FILENO);
+	grid = init_grid(fd);
 	ft_set_params(grid);
 	if (!g_errno)
 		read_first_line(grid);
 	if (!g_errno)
 		ft_read(grid);
-	if (!g_errno)
+	if (g_errno)
+		ft_putstr("Map error\n");
+	else
 	{
 		ft_remap(grid);
-	}	
-	if (g_errno)
+		point = find_max(grid);
+		draw_square(grid, point.x, point.y, point.max);
+		print_grid(grid);
+	}
+	if (fd > 0)
+		close(fd);
+	free_grid(grid);
+}
+
+int		main(int ac, char **av)
+{
+	int	i;
+	int	fd;
+
+	if (ac > 1)
 	{
-		ft_putnbr(g_errno);
-		ft_putstr("erreur\n");
+		i = 1;
+		while (i < ac)
+		{
+			fd = open(av[i]);
+			if (fd == -1)
+				ft_errno(8);
+			if (!g_errno)
+				ft_execute(fd);
+			else
+			{
+				ft_putnbr(g_errno);
+				ft_putstr("Map error\n");
+			}
+			i++;
+		}
 	}
 	else
-		print_index(grid);
-	free_grid(grid);
+		ft_execute(STDIN_FILENO);
 	return (0);
 }
