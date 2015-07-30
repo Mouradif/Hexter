@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:36:56 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 17:52:51 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/30 18:28:53 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,11 @@ int		main(void)
 	ft_set_params(grid);
 	read_first_line(grid);
 	ft_read(grid);
-	if (errno)
+	if (g_errno)
+	{
+		ft_putnbr(g_errno);
 		ft_putstr("erreur\n");
+	}
 	else
 		print_grid(grid);
 	return (0);
