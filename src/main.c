@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:36:56 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 14:48:31 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/30 17:04:12 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,11 @@ void	map_line();
 
 void	ft_read(t_grid *grid)
 {
-	char	buf;
 	char	*str;
 	size_t	j;
-	int		err;
 
 	j = 1;
-	while ((str = ft_getline(grid->fd)))
+	while (ft_getline(&str, grid->fd))
 	{
 		if (j >= grid->height)
 		{
