@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 20:09:34 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/29 22:42:49 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 14:55:47 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,15 @@ int	ft_allowed_chars(t_grid *grid, char c)
 		return (1);
 	else
 		return (errno(5));
+}
+
+int	valid_line(t_grid *grid, char *str)
+{
+	while (*str)
+	{
+		if (*str != grid->vide && *str != grid->obs)
+			return (0);
+		str++;
+	}
+	return (1);
 }
