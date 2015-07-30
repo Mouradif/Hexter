@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:36:56 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 22:07:05 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/30 22:18:37 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int		main(int ac, char **av)
 		i = 1;
 		while (i < ac)
 		{
-			fd = open(av[i]);
+			fd = open(av[i], O_RDONLY);
 			if (fd == -1)
 				ft_errno(8);
 			if (!g_errno)
