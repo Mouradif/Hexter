@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:38:51 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 13:36:03 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/30 16:45:42 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int		is_printable(char c);
 t_grid	*init_grid(int fd);
 void	print_grid(t_grid *grid);
 void	read_first_line(t_grid *grid);
-char	*ft_getline(int fd);
+int		ft_getline(char **buf, int fd);
 
 #endif
