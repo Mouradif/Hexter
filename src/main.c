@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:36:56 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 17:39:51 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 18:48:00 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,17 @@ int		main(void)
 
 	grid = init_grid(STDIN_FILENO);
 	ft_set_params(grid);
-	read_first_line(grid);
-	ft_read(grid);
-	if (errno)
+	if (!g_errno)
+		read_first_line(grid);
+	if (!g_errno)
+		ft_read(grid);
+	if (g_errno)
+	{
+		ft_putnbr(g_errno);
 		ft_putstr("erreur\n");
+	}
 	else
 		print_grid(grid);
+	free_grid(grid);
 	return (0);
 }
