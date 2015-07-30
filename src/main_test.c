@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/30 18:54:37 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/30 19:34:14 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/30 20:04:36 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_read(t_grid *grid)
 	{
 		if (j >= grid->height)
 		{
-			errno(13);
+			ft_errno(13);
 			free(str);
 			return ;
 		}
@@ -43,7 +43,7 @@ void	ft_read(t_grid *grid)
 		j++;
 	}
 	if (j < grid->height)
-		errno(13);
+		ft_errno(13);
 }
 /*
    char	*read_file(char *path)
@@ -82,6 +82,6 @@ int		main(void)
 	}
 	else
 		print_index(grid);
-	//free_grid(grid);
+	free_grid(grid);
 	return (0);
 }
