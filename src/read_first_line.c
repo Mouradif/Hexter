@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 19:16:14 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/30 18:57:35 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/30 19:34:49 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	read_first_line(t_grid *grid)
 	i = ft_getline(&str, grid->fd);
 	if (!i)
 	{
-		errno(1);
+		ft_errno(1);
 		free(str);
 		return ;
 	}
