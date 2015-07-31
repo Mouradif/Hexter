@@ -6,13 +6,14 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 18:37:59 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 20:50:02 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/07/31 09:23:49 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
 #include "bsq.h"
 #include "err.h"
+#include "ft.h"
 
 int	map_line(t_grid *grid, char *str, size_t j)
 {
@@ -30,7 +31,7 @@ int	map_line(t_grid *grid, char *str, size_t j)
 			return (ft_errno(5));
 		grid->g[j][i].cell = str[i];
 		grid->g[j][i].index = (str[i] == grid->obs) ? 0 : 1;
-		grid->g[j][i].sum = 0;
+		ft_strcpy(grid->g[j][i].color, ((grid->g[j][i].index) ? KGRN : KRED));
 		i++;
 	}
 	return (0);

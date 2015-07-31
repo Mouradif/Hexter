@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 19:16:14 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/30 23:06:36 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/31 09:23:08 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	read_first_line(t_grid *grid)
 		}
 		grid->g[0][i].cell = str[i];
 		grid->g[0][i].index = (str[i] == grid->obs) ? 0 : 1;
+		ft_strcpy(grid->g[0][i].color, ((grid->g[0][i].index) ? KGRN : KRED));
 		i++;
 	}
 	free(str);

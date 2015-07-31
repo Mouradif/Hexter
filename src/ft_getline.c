@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/30 12:59:20 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 23:04:31 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/07/31 03:42:51 by mkejji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		ft_getline(char **buf, int fd)
 	if (*buf)
 	{
 		ft_memset(*buf, size + 1);
-		while (count = read(fd, (*buf + i), 1) && (*buf)[i]
+		while ((count = read(fd, (*buf + i), 1)) && (*buf)[i]
 				&& (*buf)[i] != '\n')
 		{
 			i += count;
