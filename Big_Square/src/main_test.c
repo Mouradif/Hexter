@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_test.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/07/30 22:10:58 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/30 22:16:31 by mkejji           ###   ########.fr       */
+/*   Created: 2015/07/27 16:36:56 by jlawson           #+#    #+#             */
+/*   Updated: 2015/07/30 22:59:59 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <fcntl.h>
 #include "bsq.h"
 #include "ft.h"
+#include "test.h"
 #include "err.h"
 
 #define BUF_SIZE (1024 * 300)
@@ -29,7 +30,7 @@ void	ft_read(t_grid *grid)
 	size_t	j;
 
 	j = 1;
-	while (ft_getline(&str, grid->fd))
+	while (ft_getline(&str, grid->fd) && !g_errno)
 	{
 		if (j >= grid->height)
 		{
@@ -41,6 +42,7 @@ void	ft_read(t_grid *grid)
 		free(str);
 		j++;
 	}
+	free(str);
 	if (j < grid->height)
 		ft_errno(13);
 }
@@ -57,8 +59,8 @@ int		read_file(char *path)
 
 void	ft_execute(int fd)
 {
-	t_grid	*grid;
-	t_point	point;
+	t_grid			*grid;
+	t_point			point;
 
 	grid = init_grid(fd);
 	ft_set_params(grid);
@@ -66,6 +68,8 @@ void	ft_execute(int fd)
 		read_first_line(grid);
 	if (!g_errno)
 		ft_read(grid);
+	if (!g_errno)
+		test_full(grid);
 	if (g_errno)
 		ft_putstr("Map error\n");
 	else
@@ -73,7 +77,7 @@ void	ft_execute(int fd)
 		ft_remap(grid);
 		point = find_max(grid);
 		draw_square(grid, point.x, point.y, point.max);
-		print_grid(grid);
+		print_index(grid);
 	}
 	if (fd > 0)
 		close(fd);
@@ -90,7 +94,7 @@ int		main(int ac, char **av)
 		i = 1;
 		while (i < ac)
 		{
-			fd = open(av[i]);
+			fd = open(av[i], O_RDONLY);
 			if (fd == -1)
 				ft_errno(8);
 			if (!g_errno)

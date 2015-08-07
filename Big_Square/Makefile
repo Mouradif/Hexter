@@ -32,6 +32,8 @@ SRC = src/bsq.c \
 	  src/test_full.c \
 	  src/ft_str.c
 
+SRC_TEST = $(SRC) src/print_index.c
+
 FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
@@ -39,11 +41,8 @@ all: $(NAME)
 $(NAME): $(SRC)
 	gcc $(FLAGS) -Iinclude $(SRC) -o $(NAME) src/main.c
 
-debug: $(SRC)
-	gcc $(FLAGS) -g -Iinclude $(SRC) -o $(NAME)-debug src/main_debug.c
-
 test: $(SRC)
-	gcc $(FLAGS) -Iinclude $(SRC) src/print_index.c -o $(NAME)-test src/main_test.c
+	gcc $(FLAGS) -Iinclude $(SRC_TEST) -o $(NAME)-test src/main_test.c
 
 clean:
 	rm -f $(NAME)

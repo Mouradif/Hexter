@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include "struct.h"
 #include "ft.h"
+#include "test.h"
 
 int		ft_cell_search(t_grid *grid, size_t x, size_t y)
 {
@@ -46,6 +47,8 @@ void	ft_remap(t_grid *grid)
 		{
 			i--;
 			grid->g[j][i].index = ft_cell_search(grid, i, j);
+			ft_putnbr(grid->g[j][i].index);
+			ft_putchar(127);
 		}
 	}
 }
