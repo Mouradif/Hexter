@@ -43,8 +43,11 @@ void	close_bracket(char *input, int *i)
 	}
 }
 
-void	brainfuck(unsigned char *p, char *input, int i)
+void	brainfuck(unsigned char *p, char *input)
 {
+	int i;
+
+	i = 0;
 	while (input[i])
 	{
 		if (input[i] == '>')
@@ -72,11 +75,8 @@ void	brainfuck(unsigned char *p, char *input, int i)
 int		main(int argc, char **argv)
 {
 	unsigned char	*octets;
-	unsigned char	*p;
-	char			*input;
 	int				i;
 
-	input = (char*)malloc(4096);
 	octets = (unsigned char*)malloc(2048);
 	i = 0;
 	while (i < 2048)
@@ -84,14 +84,10 @@ int		main(int argc, char **argv)
 		octets[i] = 0;
 		i++;
 	}
-	i = 0;
-	p = octets;
 	if (argc == 2)
 	{
-		input = argv[1];
-		brainfuck(p, input, i);
+		brainfuck(octets, argv[1]);
 	}
-	free(input);
 	free(octets);
 	return (0);
 }
