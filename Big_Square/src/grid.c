@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 19:44:15 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 23:05:36 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/09/12 17:21:27 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #include "ft.h"
 #include "test.h"
 
-int		ft_cell_search(t_grid *grid, size_t x, size_t y)
+unsigned int	ft_cell_search(t_grid *grid, size_t x, size_t y)
 {
-	int res[3];
+	unsigned int res[3];
 
 	if (!grid->g[y][x].index)
 		return (0);
@@ -33,12 +33,14 @@ int		ft_cell_search(t_grid *grid, size_t x, size_t y)
 	return (ft_min(res, 3) + 1);
 }
 
-void	ft_remap(t_grid *grid)
+t_point	ft_remap(t_grid *grid)
 {
-	size_t i;
-	size_t j;
+	size_t	i;
+	size_t	j;
+	t_point	res;
 
 	j = grid->height;
+	res.max = 0;
 	while (j > 0)
 	{
 		j--;
@@ -47,8 +49,13 @@ void	ft_remap(t_grid *grid)
 		{
 			i--;
 			grid->g[j][i].index = ft_cell_search(grid, i, j);
-			ft_putnbr(grid->g[j][i].index);
-			ft_putchar(127);
+			if (grid->g[j][i].index >= res.max)
+			{
+				res.max = grid->g[j][i].index;
+				res.x = i;
+				res.y = j;
+			}
 		}
 	}
+	return (res);
 }

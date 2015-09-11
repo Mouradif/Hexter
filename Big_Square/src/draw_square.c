@@ -6,26 +6,28 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/30 18:29:20 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/31 15:23:48 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/09/12 17:21:19 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
-#include "ft.h" 
+#include "ft.h"
 
-void	draw_square(t_grid *grid, size_t x, size_t y, size_t size)
+void	draw_square(t_grid *grid, t_point point)
 {
 	size_t i;
 	size_t j;
 
 	j = 0;
-	while (j++ < size)
+	while (j < point.max)
 	{
 		i = 0;
-		while (i++ < size)
+		while (i < point.max)
 		{
-			grid->g[(y + j - 1)][(x + i - 1)].cell = grid->plein;
-			ft_strcpy(grid->g[(y + j - 1)][(x + i - 1)].color, KWHT);
+			grid->g[(point.y + j)][(point.x + i)].cell = grid->plein;
+			ft_strcpy(grid->g[(point.y + j)][(point.x + i)].color, KWHT);
+			i++;
 		}
+		j++;
 	}
 }

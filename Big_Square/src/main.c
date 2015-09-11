@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 16:36:56 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/30 22:59:59 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/09/12 19:10:07 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_read(t_grid *grid)
 		j++;
 	}
 	free(str);
-	if (j < grid->height)
+	if (j < grid->height - 1)
 		ft_errno(13);
 }
 
@@ -59,7 +59,6 @@ int		read_file(char *path)
 void	ft_execute(int fd)
 {
 	t_grid			*grid;
-	t_point			point;
 
 	grid = init_grid(fd);
 	ft_set_params(grid);
@@ -67,15 +66,11 @@ void	ft_execute(int fd)
 		read_first_line(grid);
 	if (!g_errno)
 		ft_read(grid);
-	if (!g_errno)
-		test_full(grid);
 	if (g_errno)
 		ft_putstr("Map error\n");
 	else
 	{
-		ft_remap(grid);
-		point = find_max(grid);
-		draw_square(grid, point.x, point.y, point.max);
+		draw_square(grid, ft_remap(grid));
 		print_grid(grid);
 	}
 	if (fd > 0)
@@ -93,6 +88,7 @@ int		main(int ac, char **av)
 		i = 1;
 		while (i < ac)
 		{
+			ft_errno(0);
 			fd = open(av[i], O_RDONLY);
 			if (fd == -1)
 				ft_errno(8);

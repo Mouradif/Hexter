@@ -6,45 +6,77 @@
 #    By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/07/29 05:57:20 by mkejji            #+#    #+#              #
-#    Updated: 2015/07/31 05:09:25 by mkejji           ###   ########.fr        #
+#    Updated: 2015/09/12 17:39:36 by jlawson          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = bsq
-SRC = src/bsq.c \
-	  src/ft_putchar.c \
-	  src/ft_putstr.c \
-	  src/ft_atoi.c \
-	  src/ft_putnbr.c \
-	  src/ft_realloc.c \
-	  src/ft_strlen.c \
-	  src/grid.c \
-	  src/error_manager.c \
-	  src/print_grid.c \
-	  src/ft_allowed_chars.c \
-	  src/ft_set_params.c \
-	  src/read_first_line.c \
-	  src/init_grid.c \
-	  src/ft_getline.c \
-	  src/draw_square.c \
-	  src/ft_min.c \
-	  src/find_max.c \
-	  src/test_full.c \
-	  src/ft_str.c
+NAME := bsq
 
-SRC_TEST = $(SRC) src/print_index.c
+SRC := \
+      bsq \
+      grid \
+      error_manager \
+      print_grid \
+      ft_allowed_chars \
+      ft_set_params \
+      read_first_line \
+      init_grid \
+      draw_square \
+      find_max \
+      test_full \
+      ft_atoi \
+      ft_putnbr \
+      ft_realloc \
+      ft_strlen \
+      ft_putchar \
+      ft_putstr \
+      ft_min \
+      ft_getline \
+      ft_str
 
-FLAGS = -Wall -Werror -Wextra
+CFLAGS := -Wall -Werror -Wextra -Iinclude
+VPATH := src
+
+ifneq ($(VISUAL),y)
+	Q = @
+endif
+
+ifneq ($(MAIN_TEST),)
+	CFLAGS += -g
+	NAME := $(join $(NAME),-test)
+	DEBUG_OBJ := $(notdir $(addsuffix .o, $(basename $(MAIN_TEST))))
+
+$(DEBUG_OBJ): $(MAIN_TEST)
+	$(Q)$(CC) $(CFLAGS) -c $< -o $@
+	@echo " CC $@"
+else
+	CFLAGS += -O2
+	SRC += main
+endif
+
+OBJ := $(addsuffix .o, $(SRC))
+
+%.o: $(addprefix src/, %.c)
+	$(Q)$(CC) $(CFLAGS) -c $< -o $@
+	@echo " CC $@"
+
+default: all
 
 all: $(NAME)
 
-$(NAME): $(SRC)
-	gcc $(FLAGS) -Iinclude $(SRC) -o $(NAME) src/main.c
-
-test: $(SRC)
-	gcc $(FLAGS) -Iinclude $(SRC_TEST) -o $(NAME)-test src/main_test.c
+$(NAME): $(OBJ) $(DEBUG_OBJ)
+	$(Q)$(CC) $(OBJ) $(DEBUG_OBJ) -o $@
+	@echo " LD $@"
 
 clean:
-	rm -f $(NAME)
+	$(Q)$(RM) $(OBJ) $(DEBUG_OBJ)
+	@echo " CLEAN $(OBJ)"
 
-re: clean all
+fclean: clean
+	$(Q)$(RM) $(NAME)
+	@echo " FCLEAN $(NAME)"
+
+re: fclean
+	$(MAKE) all
+
+.PHONY: all $(NAME) clean fclean re

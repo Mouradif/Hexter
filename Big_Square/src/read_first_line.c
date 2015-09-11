@@ -6,7 +6,7 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 19:16:14 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/31 09:23:08 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/09/12 18:02:04 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	read_first_line(t_grid *grid)
 	{
 		if (!ft_allowed_chars(grid, str[i]))
 		{
+			ft_errno(5);
 			free(str);
 			return ;
 		}

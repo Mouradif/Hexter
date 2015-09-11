@@ -6,14 +6,14 @@
 /*   By: mkejji <mkejji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/29 19:52:01 by mkejji            #+#    #+#             */
-/*   Updated: 2015/07/30 19:39:48 by jlawson          ###   ########.fr       */
+/*   Updated: 2015/09/12 17:21:03 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERR_H
 # define ERR_H
 
-int			ft_errno(int err);
+int		ft_errno(int err);
 void		*v_errno(int err);
 extern int	g_errno;
 

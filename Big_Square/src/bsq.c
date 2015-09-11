@@ -6,7 +6,7 @@
 /*   By: jlawson <jlawson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/27 18:37:59 by jlawson           #+#    #+#             */
-/*   Updated: 2015/07/31 09:23:49 by mkejji           ###   ########.fr       */
+/*   Updated: 2015/09/12 17:55:33 by jlawson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ int	map_line(t_grid *grid, char *str, size_t j)
 	size_t i;
 
 	if (j >= grid->height)
-	{
 		return (ft_errno(3));
-	}
 	grid->g[j] = malloc(grid->width * sizeof(t_cell));
 	i = 0;
 	while (i < grid->width)
