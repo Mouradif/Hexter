@@ -13,12 +13,12 @@
 #include <unistd.h>
 #include "ft.h"
 
-void	ft_putstr(char *str)
+int	ft_putstr(char *str)
 {
-	write(STDOUT_FILENO, str, ft_strlen(str));
+	return (write(STDOUT_FILENO, str, ft_strlen(str)));
 }
 
-void	ft_err_putstr(char *str)
+int	ft_err_putstr(char *str)
 {
-	write(STDERR_FILENO, str, ft_strlen(str));
+	return (write(STDERR_FILENO, str, ft_strlen(str)));
 }

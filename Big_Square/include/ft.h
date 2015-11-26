@@ -13,10 +13,10 @@
 #ifndef FT_H
 # define FT_H
 
-void		ft_putchar(char c);
-void		ft_err_putchar(char c);
-void		ft_putstr(char *str);
-void		ft_err_putstr(char *str);
+int		ft_putchar(char c);
+int		ft_err_putchar(char c);
+int		ft_putstr(char *str);
+int		ft_err_putstr(char *str);
 void		ft_putnbr(int nb);
 void		ft_err_putnbr(int nb);
 int		ft_atoi(char *str);

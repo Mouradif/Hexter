@@ -17,7 +17,7 @@ void	print_grid(t_grid *grid)
 {
 	size_t i;
 	size_t j;
-
+/*
 	ft_putnbr(grid->width);
 	ft_putchar('x');
 	ft_putnbr(grid->height);
@@ -28,13 +28,13 @@ void	print_grid(t_grid *grid)
 	ft_putstr("] [");
 	ft_putchar(grid->plein);
 	ft_putstr("]\n");
+*/
 	j = 0;
 	while (j < grid->height)
 	{
 		i = 0;
 		while (i < grid->width)
 		{
-			ft_putstr(grid->g[j][i].color);
 			ft_putchar(grid->g[j][i].cell);
 			i++;
 		}

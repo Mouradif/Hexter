@@ -12,12 +12,12 @@
 
 #include <unistd.h>
 
-void ft_putchar(char c)
+int	ft_putchar(char c)
 {
-	write(STDOUT_FILENO, &c, 1);
+	return (write(STDOUT_FILENO, &c, 1) != 1);
 }
 
-void ft_err_putchar(char c)
+int	ft_err_putchar(char c)
 {
-	write(STDERR_FILENO, &c, 1);
+	return (write(STDERR_FILENO, &c, 1));
 }
