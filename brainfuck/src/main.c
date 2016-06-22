@@ -11,6 +11,10 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
 #include "ftlib.h"
 
 void	open_bracket(char *input, int *i)
@@ -76,6 +80,9 @@ int		main(int argc, char **argv)
 {
 	unsigned char	*octets;
 	int				i;
+	int				fd;
+	char			*file;
+	struct stat		file_info;
 
 	octets = (unsigned char*)malloc(2048);
 	i = 0;
@@ -84,9 +91,13 @@ int		main(int argc, char **argv)
 		octets[i] = 0;
 		i++;
 	}
-	if (argc == 2)
+	if (argc == 2 && !stat(argv[1], &file_info) &&
+			(file = malloc(file_info.st_size + 1)))
 	{
-		brainfuck(octets, argv[1]);
+		fd = open(argv[1], O_RDONLY);
+		read(fd, file, file_info.st_size);
+		close(fd);
+		brainfuck(octets, file);
 	}
 	free(octets);
 	return (0);
